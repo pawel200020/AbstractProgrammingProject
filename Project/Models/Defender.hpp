@@ -12,7 +12,7 @@ protected:
 public:
     Defender(std::string name, std::string lastName, int age, std::string team, double power, double defenceAccuracy);
 
-    bool Defend();
+    Defender(Defender & defender);
 };
 
 

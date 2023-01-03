@@ -19,3 +19,9 @@ std::string Fan::MakeSomeNoise() {
     where<<"Fan named: "<<_name<<" "<<_lastName<<"aged: "<<_age<<'\n';
 }
 
+std::string Fan::Stats() {
+    std::stringstream res;
+    res<<"Fan of "<<_favouriteTeam<<" named "<<_name<<" "<<_lastName<<" aged "<<_age<<" his favourite cheer is: "<<_favouriteCheer<<'\n';
+    return res.str();
+}
+

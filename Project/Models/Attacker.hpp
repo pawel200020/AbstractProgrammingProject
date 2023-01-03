@@ -7,13 +7,16 @@
 
 
 #include "Player.hpp"
+#include "GoalKeeper.hpp"
 
 class Attacker : public Player{
 protected:
     double _accuracy;
 public:
     Attacker(std::string name, std::string lastName, int age, std::string team, double power, double accuracy);
-    bool Shoot();
+    double GetAccuracy();
+    bool Shoot(GoalKeeper goalKeeper);
+    bool Pass(Attacker attacker, Attacker opponent);
 };
 
 

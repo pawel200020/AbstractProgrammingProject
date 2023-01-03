@@ -13,6 +13,8 @@ protected:
 public:
     Player(std::string name, std::string lastName, int age, std::string team, double power);
     virtual void print(std::ostream &where) const;
+    std::string Stats();
+
 };
 
 

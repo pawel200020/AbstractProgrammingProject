@@ -9,6 +9,7 @@ Defender::Defender(std::string name, std::string lastName, int age, std::string 
 
 }
 
-bool Defender::Defend() {
-    return false;
+
+Defender::Defender(Defender &defender) : Player(defender){
+    _defenceAccuracy = defender._defenceAccuracy;
 }

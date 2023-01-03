@@ -13,6 +13,7 @@ protected:
 public:
     Fan (std::string name, std::string lastName,int age,std::string favouriteTeam,std::string favouriteCheer);
     std::string MakeSomeNoise();
+    std::string Stats();
     virtual void print(std::ostream& where) const;
 };
 

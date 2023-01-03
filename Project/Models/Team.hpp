@@ -8,15 +8,31 @@
 
 #include <list>
 #include <set>
+#include <vector>
 #include "Player.hpp"
 #include "Fan.hpp"
+#include "GoalKeeper.hpp"
+#include "Defender.hpp"
+#include "Attacker.hpp"
 
 class Team {
 public:
-    std::list<Player*>* _players;
-    std::list<Fan*>* _fans;
-    Team(std::list<Player*>* players, std::list<Fan*>* fans);
-    Team(std::list<std::string>* playersNames, std::list<std::string>* fanNames);
+    std::vector<Player *> *_players;
+    GoalKeeper* goalKeeper;
+    std::vector<Defender*>* defenders;
+    std::vector<Attacker*>* attackers;
+    std::vector<Fan *> *_fans;
+    std::string _name;
+    int score = 0;
+
+    Team(std::vector<Player *> *players, std::vector<Fan *> *fans);
+
+    Team(std::list<std::string> *playersNames, std::list<std::string> *playersLastNames,
+         std::list<std::string> *fanNames, std::list<std::string> *fanLastNames, std::string name);
+
+    void PrintTeam();
+    void ShotAPenalty(Team* team, Attacker * attacker = nullptr);
+    void MakeShortAction(Team* team);
 
 };
 
