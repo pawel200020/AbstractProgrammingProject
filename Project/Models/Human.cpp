@@ -4,4 +4,4 @@
 
 #include "Human.hpp"
 
-Human::Human(std::string name, std::string lastName, int age): _name(name), _lastName(lastName), _age(age) {}
+Human::Human(std::string name, std::string lastName, int age) : _name(name), _lastName(lastName), _age(age) {}

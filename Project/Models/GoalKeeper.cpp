@@ -5,7 +5,8 @@
 #include "GoalKeeper.hpp"
 
 GoalKeeper::GoalKeeper(std::string name, std::string lastName, int age, std::string team, double power,
-                       double defenceAccuracy): Player(name, lastName,age,team,power), _defenceAccuracy(defenceAccuracy){
+                       double defenceAccuracy) : Player(name, lastName, age, team, power),
+                                                 _defenceAccuracy(defenceAccuracy) {
 }
 
 double GoalKeeper::GetDefenceAccuracy() {
@@ -13,5 +14,5 @@ double GoalKeeper::GetDefenceAccuracy() {
 }
 
 double GoalKeeper::getScore() {
-    return _power+_defenceAccuracy;
+    return _power + _defenceAccuracy;
 }

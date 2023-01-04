@@ -5,11 +5,12 @@
 #include "Defender.hpp"
 
 Defender::Defender(std::string name, std::string lastName, int age, std::string team, double power,
-                   double defenceAccuracy): Player(name, lastName,age,team,power), _defenceAccuracy(defenceAccuracy) {
+                   double defenceAccuracy) : Player(name, lastName, age, team, power),
+                                             _defenceAccuracy(defenceAccuracy) {
 
 }
 
 
-Defender::Defender(Defender &defender) : Player(defender){
+Defender::Defender(Defender &defender) : Player(defender) {
     _defenceAccuracy = defender._defenceAccuracy;
 }

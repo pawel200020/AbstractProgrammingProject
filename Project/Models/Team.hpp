@@ -16,24 +16,29 @@
 #include "Attacker.hpp"
 
 class Team {
-public:
+protected:
     std::vector<Player *> *_players;
-    GoalKeeper* goalKeeper;
-    std::vector<Defender*>* defenders;
-    std::vector<Attacker*>* attackers;
+    GoalKeeper *goalKeeper;
+    std::vector<Defender *> *defenders;
+    std::vector<Attacker *> *attackers;
     std::vector<Fan *> *_fans;
     std::string _name;
     int score = 0;
-
-    Team(std::vector<Player *> *players, std::vector<Fan *> *fans);
-
+public:
     Team(std::list<std::string> *playersNames, std::list<std::string> *playersLastNames,
-         std::list<std::string> *fanNames, std::list<std::string> *fanLastNames, std::string name);
+         std::list<std::string> *fanNames, std::list<std::string> *fanLastNames, const std::string& name);
 
     void PrintTeam();
-    void ShotAPenalty(Team* team, Attacker * attacker = nullptr);
-    void MakeShortAction(Team* team);
 
+    void ShotAPenalty(Team *team, Attacker *attacker = nullptr);
+
+    void MakeShortAction(Team *team);
+
+    int *GetTeamPowerStats();
+
+    int GetScore() const;
+
+    std::string GetName();
 };
 
 

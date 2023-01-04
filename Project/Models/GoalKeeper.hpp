@@ -4,14 +4,17 @@
 
 #ifndef PROJECT_GOALKEEPER_HPP
 #define PROJECT_GOALKEEPER_HPP
+
 #include "Player.hpp"
 
 class GoalKeeper : public Player {
 protected:
-    double _defenceAccuracy;
+    const double _defenceAccuracy;
 public:
     GoalKeeper(std::string name, std::string lastName, int age, std::string team, double power, double defenceAccuracy);
+
     double GetDefenceAccuracy();
+
     double getScore();
 };
 

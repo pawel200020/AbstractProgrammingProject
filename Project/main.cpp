@@ -45,6 +45,14 @@ void printList(std::list<T> const &list) {
 }
 
 template<typename T, int n>
+void printArray(int *array) {
+    for (int i = 0; i < n; i++) {
+        std::cout << array[i] << " ";
+    }
+    std::cout << '\n';
+}
+
+template<typename T, int n>
 std::list<T> *createSubList(std::list<T> *list) {
     auto *result = new std::list<T>;
     int k = 0;
@@ -58,7 +66,7 @@ std::list<T> *createSubList(std::list<T> *list) {
 
 
 int main() {
-    int i = 11;
+    srand(time(nullptr));
     std::list<std::string> *names = readFromFileToList<std::string>("names.txt");
     std::list<std::string> *lastNames = readFromFileToList<std::string>("last_names.txt");
     //cretate names for teams
@@ -77,8 +85,8 @@ int main() {
                            "Barcelona");
     Team *team2 = new Team(namesOfSecondTeam, lastNamesOfSecondTeam, namesOfFansSecondTeam, lastNamesOfFansSecondTeam,
                            "Real");
-    std::cout<<"\nWelcome to football App please select an option:\n";
-    std::string mainScreenMessage = " T1- Display team 1\n T2 - Display team 2\n P1- penalty shoot for team 1 \n P2- penalty shoot for team 2\n A- play short action\n R- Display result\n E- Exit\n";
+    std::cout << "\nWelcome to football App please select an option:\n";
+    std::string mainScreenMessage = "\n T1- Display team 1\n T2 - Display team 2\n P1- penalty shoot for team 1 \n P2- penalty shoot for team 2\n A- play short action\n R- Display result\n S- Display teams potential\n E- Exit\n";
     std::string command;
     while (true) {
 
@@ -89,28 +97,50 @@ int main() {
             team1->PrintTeam();
         } else if (command == "T2") {
             team2->PrintTeam();
-        } else if (command == "E") {
-            return 0;
         } else if (command == "P1") {
             team1->ShotAPenalty(team2);
 
         } else if (command == "P2") {
             team2->ShotAPenalty(team1);
-        }
-        else if (command == "R") {
-            std::cout<<team1->_name<<" : "<<team2->_name<<'\n';
-            std::cout<<team1->score<<" : "<<team2->score<<'\n';
+        } else if (command == "R") {
+            std::cout << team1->GetName() << " : " << team2->GetName() << '\n';
+            std::cout << team1->GetScore() << " : " << team2->GetScore() << '\n';
 
-        }else if(command=="A"){
-            srand(time(nullptr));
+        } else if (command == "A") {
             int teamNumber = rand() % (6 - 0 + 1) + 0;
-            if(teamNumber==0){
+            if (teamNumber == 0) {
                 team1->MakeShortAction(team2);
-            }
-            else{
+            } else {
                 team2->MakeShortAction(team1);
             }
-        }else {
+        } else if (command == "S") {
+            auto team1p = team1->GetTeamPowerStats();
+            auto team2p = team2->GetTeamPowerStats();
+            bubble_sort_template<11>(team1p);
+            bubble_sort_template<11>(team2p);
+            printArray<int, 11>(team1p);
+            printArray<int, 11>(team2p);
+
+
+        } else if (command == "E") {
+            delete team1;
+            delete team2;
+
+            delete names;
+            delete lastNames;
+
+            delete namesOfFirstTeam;
+            delete namesOfSecondTeam;
+            delete lastNamesOfFirstTeam;
+            delete lastNamesOfSecondTeam;
+
+            delete namesOfFansFirstTeam;
+            delete namesOfFansSecondTeam;
+            delete lastNamesOfFansFirstTeam;
+            delete lastNamesOfFansSecondTeam;
+
+            return 0;
+        } else {
             std::cout << "Unknown Command\n";
         }
     }

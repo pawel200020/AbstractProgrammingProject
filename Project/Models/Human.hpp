@@ -9,16 +9,18 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+
 class Human {
 protected:
-    std::string _name;
-    std::string _lastName;
+    const std::string _name;
+    const std::string _lastName;
     int _age;
 public:
-    Human(std::string name, std::string lastName, int age );
-    virtual void print(std::ostream& where) const=0;
-    friend std::ostream& operator<<(std::ostream& str, Human const& data)
-    {
+    Human(std::string name, std::string lastName, int age);
+
+    virtual void print(std::ostream &where) const = 0;
+
+    friend std::ostream &operator<<(std::ostream &str, Human const &data) {
         data.print(str);
         return str;
     }
